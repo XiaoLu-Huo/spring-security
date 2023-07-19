@@ -12,6 +12,6 @@ import java.util.List;
 */
 public interface SysMenuService extends IService<SysMenu> {
 
-     public List<SysMenu> buildTreeMenu(List<SysMenu> sysMenuList);
+     List<SysMenu> buildTreeMenu(List<SysMenu> sysMenuList);
 
 }

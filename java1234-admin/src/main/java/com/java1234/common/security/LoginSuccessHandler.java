@@ -80,11 +80,14 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
         String perms[]= StringUtils.tokenizeToStringArray(permsStr.toString(),",");
 
-        List<SysMenu> sysMenuList = new ArrayList<>(menuSet); // 转成集合List
+        // 转成集合List
+        List<SysMenu> sysMenuList = new ArrayList<>(menuSet);
 
-        sysMenuList.sort(Comparator.comparing(SysMenu::getOrderNum));  // 排序
+        // 排序
+        sysMenuList.sort(Comparator.comparing(SysMenu::getOrderNum));
 
-        List<SysMenu> menuList = sysMenuService.buildTreeMenu(sysMenuList); // 构造菜单树
+        // 构造菜单树
+        List<SysMenu> menuList = sysMenuService.buildTreeMenu(sysMenuList);
 
         outputStream.write(JSONUtil.toJsonStr(R.ok("登录成功").put("authorization",token).put("menuList",menuList).put("currentUser",currentUser).put("perms",perms)).getBytes("UTF-8"));
 

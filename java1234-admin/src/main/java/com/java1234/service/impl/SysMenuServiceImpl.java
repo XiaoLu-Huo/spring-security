@@ -24,13 +24,14 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu>
      * @param sysMenuList
      * @return
      */
+     @Override
      public List<SysMenu> buildTreeMenu(List<SysMenu> sysMenuList){
         List<SysMenu> resultMenuList = new ArrayList<>();
 
         for (SysMenu sysMenu : sysMenuList) {
             // 寻找子节点
             for (SysMenu e : sysMenuList) {
-                if (e.getParentId()==sysMenu.getId()) {
+                if (e.getParentId().equals(sysMenu.getId())) {
                     sysMenu.getChildren().add(e);
                 }
             }
